@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('frontendApp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap', 'ngRoute', 'google-maps'])
+  .module('frontendApp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap', 'ngRoute', 'google-maps', 'ngGeolocation'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

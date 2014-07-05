@@ -1,0 +1,42 @@
+<script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+    $(document).ready(function() {
+
+        var socket = io();
+
+        $('.demo').each(function(i, el) {
+
+            var domMsg = $(el).find('.msg')
+            var domBtn = $(el).find('.gogo')
+
+            domBtn.click(function(e){
+                var msg = domMsg.val().trim()
+                var channel = domMsg.data('channel')
+
+                socket.emit(channel, msg);
+                console.log("/c:" + channel +" "+ msg);
+                e.preventDefault();
+            });
+
+        });
+
+        socket.on('foo', function(msg){
+            console.log("debug: " + msg);
+        });
+
+
+        socket.on('position', function(client){
+            console.log("yayy");
+            console.log(client);
+            $('.event_stream').append("<div>" + client.uuid +": lat:" +  client.lat + " long:" + client.long + "</div>")
+        });
+
+    });
+
+</script>
+
+
+<div class="event_stream">
+
+</div>
