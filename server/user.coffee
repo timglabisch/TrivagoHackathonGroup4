@@ -31,6 +31,9 @@ module.exports = class
     @setStatus request.status
     @emit "request", @
 
+  send: (channel, data) ->
+    @socket.emit channel, data
+
   onPosition: (jsonMsg) ->
     try request = JSON.parse jsonMsg
     catch

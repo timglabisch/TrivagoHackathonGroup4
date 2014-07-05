@@ -23,8 +23,8 @@
 
 
 
-        socket.on('chat message', function(msg){
-            console.log("foo: " + msg);
+        socket.on('offer', function(msg){
+            $('.event_stream').append("<div>sendOffer: " + JSON.stringify(msg) + "</div>");
         });
 
     });
@@ -67,3 +67,6 @@
     <button class="gogo"/>
 </div>
 
+<h1>event stream</h1>
+
+<div class="event_stream"></div>

@@ -23,6 +23,7 @@ class main
 
     @userManager.on 'position', @sendUpdateToBackends.bind @
     @userManager.on 'request', @sendUpdateToBackends.bind @
+    @backendUserManager.on 'sendOffer', @sendOfferToUser.bind @
 
 
   sendUpdateToBackends: (user) ->
@@ -38,6 +39,13 @@ class main
       status: user.getStatus()
       persons: user.getPersons()
       rating: user.getRating()
+
+  sendOfferToUser: (backendUser, offer) ->
+    console.log "transfer offer: " + JSON.stringify offer
+    user = @userManager.users[offer.user_uuid]
+    return console.log "cant send offer to unknown user " + @offer.user_uuid +"." if !user
+    console.log "send offer to " + offer.user_uuid
+    user.send 'offer', offer
 
   # send everything to the backend
   syncBackend: (backendUser) ->
