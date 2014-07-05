@@ -1,0 +1,10 @@
+{
+  "name": "fooo",
+  "version": "0.1.0",
+  "description": "fuu",
+  "dependencies": {
+    "coffee-script": "1.7.*",
+    "socket.io": "^1.0.6",
+    "express": "4.3.*"
+  }
+}
