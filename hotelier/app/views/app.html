@@ -1,3 +1,30 @@
-<div>
-    {{ $root.hotel | json }}
+<div class="row">
+    <div class="col-lg-3">
+        <ul class="nav nav-pills nav-stacked">
+            <li ng-repeat="request in requests" ng-class="{'active': request.active}"><a ng-click="select(request)">{{ request.uuid }}</a></li>
+        </ul>
+    </div>
+    <div class="col-lg-9">
+        <div class="row">
+            <div class="col-lg-8">
+                {{hotel | json}}
+            </div>
+            <div class="col-lg-3">
+                <google-map center="map.center" zoom="map.zoom" options="{streetViewControl: false}">
+                    <marker coords="map.center"></marker>
+                </google-map>
+            </div>
+        </div>
+        <div class="row">
+            <form ng-submit="sendOffer()">
+                <div class="form-group">
+                    <label for="offerPrice">Preis</label>
+                    <input type="number" ng-model="offer.price" id="offerPrice" name="offerPrice" class="form-control" />
+                </div>
+
+                <button type="button" class="btn btn-success">Angebot senden</button>
+            </form>
+        </div>
+    </div>
 </div>
+

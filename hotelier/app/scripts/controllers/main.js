@@ -12,7 +12,7 @@ angular.module('hotelierApp')
         $scope.submit = function () {
             $rootScope.hotel = $scope.data.selected;
 
-            $location.path("/app");
+            $location.path('/' + $scope.data.selected.place_id);
         };
 
         $scope.data = {};
@@ -21,7 +21,6 @@ angular.module('hotelierApp')
         $http.get('/hotel.json')
             .success(function(data, status, headers, config) {
                 $scope.hotels = data.data;
-                console.log(data.data);
             });
 
   });
