@@ -8,14 +8,7 @@
  * Controller of the frontendApp
  */
 angular.module('frontendApp')
-  .controller('MainCtrl', ['$scope', '$rootScope', '$geolocation', 'geocoding', '$location', function ($scope, $rootScope, $geolocation, geocoding, $location) {
-        $geolocation.watchPosition({
-            timeout: 60000,
-            maximumAge: 250,
-            enableHighAccuracy: true
-        });
-        $rootScope.position = $geolocation.position;
-
+  .controller('MainCtrl', ['$scope', '$rootScope', 'geocoding', '$location', function ($scope, $rootScope, geocoding, $location) {
         $rootScope.$watch('position', function (position) {
             if (typeof(position) == 'undefined' || typeof(position.coords) == 'undefined') {
                 $scope.location = '';
