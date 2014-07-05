@@ -29,7 +29,7 @@
         socket.on('position', function(client){
             console.log("yayy");
             console.log(client);
-            $('.event_stream').append("<div>" + client.uuid +": lat:" +  client.lat + " long:" + client.long + "</div>")
+            $('.event_stream').append("<div>" + client.uuid +": lat:" +  client.lat + " long:" + client.long + " persons:" + client.persons + " rating:" + client.rating + " status:" + client.status +  "</div>")
         });
 
     });

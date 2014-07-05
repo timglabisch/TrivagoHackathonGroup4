@@ -21,10 +21,20 @@ class main
     @userManager = new _userManager
     @backendUserManager = new _backendUserManager
 
-    @userManager.on 'position', (user) =>
-      @backendUserManager.each (backendUser) ->
-        console.log "broadcast to " + backendUser.getUuid()
-        backendUser.send 'position', { uuid: user.getUuid(), lat: user.getLat(), long: user.getLong() }
+    @userManager.on 'position', @sendUpdateToBackends.bind @
+    @userManager.on 'request', @sendUpdateToBackends.bind @
+
+  sendUpdateToBackends: (user) ->
+    @backendUserManager.each (backendUser) ->
+      console.log "broadcast to " + backendUser.getUuid()
+      backendUser.send 'position',
+        uuid: user.getUuid()
+        lat: user.getLat()
+        long: user.getLong()
+        status: user.getStatus()
+        persons: user.getPersons()
+        rating: user.getRating()
+
 
   run: ->
     io.on 'connection', @onUserConnection.bind(@)
