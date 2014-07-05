@@ -34,6 +34,14 @@ angular
         redirectTo: '/'
       });
   })
+  .run(function($rootScope, $geolocation) {
+        $geolocation.watchPosition({
+            timeout: 60000,
+            maximumAge: 250,
+            enableHighAccuracy: true
+        });
+        $rootScope.position = $geolocation.position;
+  })
   .service('geocoding', ['$http', function ($http) {
         return {
             getCityForLocation: function (coords) {
