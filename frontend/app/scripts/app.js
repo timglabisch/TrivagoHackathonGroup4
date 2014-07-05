@@ -16,6 +16,18 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/offer', {
+          templateUrl: 'views/offer.html',
+          controller: 'OfferCtrl'
+      })
+      .when('/offer/:id', {
+          templateUrl: 'views/details.html',
+          controller: 'DetailsCtrl'
+      })
+      .when('/offer/:id/book', {
+          templateUrl: 'views/booking.html',
+          controller: 'BookingCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
