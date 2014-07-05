@@ -9,6 +9,7 @@ module.exports = class
   add: (user) ->
     @users[user.getUuid()] = user
     console.log "Connect " + user.getUuid()
+    user.on 'sendOffer', (offer) => @emit 'sendOffer', user, offer
 
   remove: (user) ->
     delete @users[user.getUuid()]
