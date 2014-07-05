@@ -1,16 +1,6 @@
 @import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";;
 $fa-font-path: "/bower_components/font-awesome/fonts";
 @import "font-awesome/scss/font-awesome";
-//$icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
-// bower:scss
-// endbower
-
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
 
 /* Space out content a bit */
 body {
@@ -101,8 +91,8 @@ body {
   }
 }
 
-.angular-google-map-container { 
-  height: 400px; 
+.angular-google-map-container {
+  height: 400px;
 }
 
 /* Responsive: Portrait tablets and up */
