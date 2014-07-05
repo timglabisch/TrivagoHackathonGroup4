@@ -13,6 +13,7 @@ body {
   padding-top: 20px;
   padding-bottom: 20px;
   margin-bottom: 40px;
+  border-top: 3px solid #428bca;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -39,24 +40,32 @@ body {
 {
   margin: 0px 30px;
 }
-.logo-div
-{
-  min-height: 100px;
-}
+
 .logo
 {
   margin-left:10px;
   margin-bottom: 10px;
   max-width: 80%;
   height: auto;
+  max-height:63px;
+  float:left;
 }
-.now{
-  position:absolute;
-  top:100px;
-  left:60%;
-  width: 100px;
-  height: auto;
+
+#searchbtn {
+  background-color: #428bca;
+  color: #fff;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+  border: 1px solid rgba(0,1,1,0.4);
+  border-radius: 2px;
 }
+
+.tagline{
+  float:left;
+  color: #888;
+  font-size: 55px;
+  margin-top: -14px;
+}
+
 /* Custom page footer */
 .footer {
   position: absolute;

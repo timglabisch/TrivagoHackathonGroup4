@@ -26,10 +26,9 @@ class main
     @userManager.on 'accept_offer', @onAcceptOffer.bind @
     @backendUserManager.on 'sendOffer', @sendOfferToUser.bind @
 
-  sendDisconnectUsersToBackends: ->
+  sendDisconnectUsersToBackends: (user) ->
     @backendUserManager.each (backendUser) =>
-      @userManager.each (user) =>
-        backendUser.send 'user_disconnect', user.getUuid()
+      backendUser.send 'user_disconnect', user.getUuid()
 
   sendUpdateToBackends: (user) ->
     @backendUserManager.each (backendUser) =>
