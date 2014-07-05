@@ -181,3 +181,79 @@ clear: both;
     border-bottom: 0;
   }
 }
+
+.rating {
+  height: 34px;
+  width: 34px;
+  background-repeat: no-repeat;
+  margin-right: 8px;
+  background-color: #eee;
+  background-image: url("/images/rwd_desk_sprite_small_27.png");
+  opacity: .65;
+  cursor: pointer;
+  border-radius: 2px;
+  box-sizing: content-box;
+}
+
+.rating:hover {
+  opacity: .8;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.3);
+}
+
+.rating.active,
+.rating.active:hover {
+  border: 1px solid rgba(0, 1, 1, 0.3);
+  opacity: 1;
+}
+
+.rating_1 {
+  background-position: 3px -211px;
+}
+.rating_1.active {
+  background-color: #b32d2d;
+  background-position: 3px -170px;
+}
+.rating_1.active:hover {
+  background-color: #a32929;
+}
+.rating_2 {
+  background-position: -42px -211px;
+}
+.rating_2.active {
+  background-color: #cc951f;
+  background-position: -42px -170px;
+}
+.rating_2.active:hover {
+  background-color: #bf8c1d;
+}
+.rating_3 {
+  background-position: -87px -211px;
+}
+.rating_3.active {
+  background-color: #b1d44a;
+  background-position: -87px -170px;
+}
+.rating_3.active:hover {
+  background-color: #a7c746;
+}
+.rating_4 {
+  background-position: -132px -211px;
+}
+.rating_4.active {
+  background-color: #74d941;
+  background-position: -131px -170px;
+}
+.rating_4.active:hover {
+  background-color: #6dcc3d;
+}
+.rating_5 {
+  background-position: -177px -211px;
+}
+.rating_5.active {
+  background-color: #119a11;
+  background-position: -177px -170px;
+}
+.rating_5.active:hover {
+  background-color: #0f8c0f;
+}

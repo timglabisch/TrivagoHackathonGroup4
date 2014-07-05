@@ -25,12 +25,13 @@ angular.module('frontendApp')
         $scope.location = '';
         $scope.doubleRoom = false;
 
-        $scope.stars = {};
-        $scope.stars.one = false;
-        $scope.stars.two = false;
-        $scope.stars.three = false;
-        $scope.stars.four = false;
-        $scope.stars.five = false;
+        $scope.rating = 1;
+        $scope.rating = {};
+        $scope.rating.one = true;
+        $scope.rating.two = true;
+        $scope.rating.three = true;
+        $scope.rating.four = true;
+        $scope.rating.five = true;
 
         $scope.submit = function () {
             socket.emit('position', {
@@ -42,19 +43,19 @@ angular.module('frontendApp')
 
             var numberMap = {one: 1, two: 2, three: 3, four: 4, five: 5};
 
-            var stars = [];
-            Object.keys($scope.stars).forEach(function (key) {
-                if ($scope.stars[key]) {
-                    stars.push(numberMap[key]);
+            var ratings = [];
+            Object.keys($scope.ratings).forEach(function (key) {
+                if ($scope.ratings[key]) {
+                    ratings.push(numberMap[key]);
                 }
             });
 
             socket.emit('request', {
                 status: 1,
-                rating: stars,
+                rating: $scope.rating,
                 persons: $scope.doubleRoom ? 2 : 1
             });
 
-            $location.path( "/offer" );
-        }
+            $location.path('/offer');
+        };
     }]);
