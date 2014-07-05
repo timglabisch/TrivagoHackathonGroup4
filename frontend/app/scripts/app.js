@@ -34,6 +34,7 @@ angular
         redirectTo: '/'
       });
   })
+
   .run(function($rootScope, $geolocation) {
         $geolocation.watchPosition({
             timeout: 60000,
@@ -75,10 +76,22 @@ angular
             }
         };
     }])
+    /*
   .factory('ws', function ($rootScope) {
-    var socket = io.connect();
+    var socket = io();
 
     return {
+      emit: function (event, data, callback) {
+        socket.emit(event, data, function () {
+          var args = arguments;
+          $rootScope.$apply(function () {
+            if (callback) {
+              callback.apply(null, args);
+            }
+          });
+        });
+      },
+
       on: function (event, callback) {
         socket.on(event, function () {
           var args = arguments;
@@ -89,7 +102,7 @@ angular
       }
     };
   })
-
+  */
   .directive('tabs', function() {
     return {
       restrict: 'E',
