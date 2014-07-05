@@ -16,7 +16,7 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/:place_id', {
+      .when('/app', {
         templateUrl: 'views/app.html',
         controller: 'AppCtrl'
       })

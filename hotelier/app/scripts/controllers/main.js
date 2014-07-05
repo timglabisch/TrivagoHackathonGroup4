@@ -8,15 +8,20 @@
  * Controller of the hotelierApp
  */
 angular.module('hotelierApp')
-  .controller('MainCtrl', function ($scope, $http) {
+  .controller('MainCtrl', function ($scope, $http, $location, $rootScope) {
         $scope.submit = function () {
+            $rootScope.hotel = $scope.data.selected;
 
+            $location.path("/app");
         };
 
-        $scope.hotel = {};
+        $scope.data = {};
+        $scope.hotels = [];
 
         $http.get('/hotel.json')
             .success(function(data, status, headers, config) {
-                console.log(data);
-            })
+                $scope.hotels = data.data;
+                console.log(data.data);
+            });
+
   });
