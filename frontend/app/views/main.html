@@ -1,42 +1,45 @@
-<div class="logo-div" style="margin-top:95px">
-    <img class="img-responsive logo" src="images/logo@2x_.png">
-    <div class="tagline">/now</div>
-</div>
+<div style="width: 480px; margin: 0 auto;">
 
-<div style="clear:both"></div>
-
-<form class="form-horizontal form-size" ng-submit="submit()">
-
-    <div style="margin-top:10px; margin-left:-14px;">
-        <div class="form-group" style="float:left; margin:0 0 0 0">
-             <p>Bewertung</p>
-             <div class="btn-group">
-                <label class="btn btn-primary btn-lg" ng-model="stars.one" btn-checkbox>1</label>
-                <label class="btn btn-primary btn-lg" ng-model="stars.two" btn-checkbox>2</label>
-                <label class="btn btn-primary btn-lg" ng-model="stars.three" btn-checkbox>3</label>
-                <label class="btn btn-primary btn-lg" ng-model="stars.four" btn-checkbox>4</label>
-                <label class="btn btn-primary btn-lg" ng-model="stars.five" btn-checkbox>5</label>
-            </div>
-        </div>
-        <div class="form-group" style="float:left; margin: 0 0 0 15px">
-            <p>&nbsp;</p>
-            <div class="btn-group">
-                <label class="btn btn-primary btn-lg" ng-model="doubleRoom" btn-radio="false"><span class="fa fa-female"></span></label>
-                <label class="btn btn-primary btn-lg" ng-model="doubleRoom" btn-radio="true"><span class="fa fa-female"></span><span class="fa fa-male"></span></label>
-            </div>
-        </div>
-        <div style="clear:both"></div>
-    </div>
-
-    <div class="form-group search" style="margin-top:30px">
-        <div style="float:left; width: 50%; margin-right:15px;">
-            <div class="input-group">
-                <span class="input-group-addon"><span class="fa fa-globe"></span></span>
-                <input type="text" class="form-control" value="{{ location }}">
-            </div>
-        </div>
-        <button type="submit" id="searchbtn" style="float:left; margin-top:-7px" class="btn btn-success btn-lg">Suchen</button>
+    <div class="logo-div" style="margin-top:95px">
+        <img class="img-responsive logo" src="images/logo@2x_.png">
+        <div class="tagline">/now</div>
     </div>
 
     <div style="clear:both"></div>
-</form>
+
+    <form class="form-horizontal form-size" ng-submit="submit()">
+
+        <div style="margin-top:10px; margin-left:-14px;">
+            <div class="form-group" style="float:left; margin:0 0 0 0">
+                 <p>Bewertung</p>
+                 <div class="btn-group">
+                    <label class="btn btn-primary btn-lg" ng-model="stars.one" btn-checkbox>1</label>
+                    <label class="btn btn-primary btn-lg" ng-model="stars.two" btn-checkbox>2</label>
+                    <label class="btn btn-primary btn-lg" ng-model="stars.three" btn-checkbox>3</label>
+                    <label class="btn btn-primary btn-lg" ng-model="stars.four" btn-checkbox>4</label>
+                    <label class="btn btn-primary btn-lg" ng-model="stars.five" btn-checkbox>5</label>
+                </div>
+            </div>
+            <div class="form-group" style="float:left; margin: 0 0 0 15px">
+                <p>&nbsp;</p>
+                <div class="btn-group">
+                    <label class="btn btn-primary btn-lg" ng-model="doubleRoom" btn-radio="false"><span class="fa fa-female"></span></label>
+                    <label class="btn btn-primary btn-lg" ng-model="doubleRoom" btn-radio="true"><span class="fa fa-female"></span><span class="fa fa-male"></span></label>
+                </div>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+
+        <div class="form-group search" style="margin-top:30px">
+            <div style="float:left; width: 50%; margin-right:15px;">
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="fa fa-globe"></span></span>
+                    <input type="text" class="form-control" value="{{ location }}">
+                </div>
+            </div>
+            <button type="submit" id="searchbtn" style="float:left; margin-top:-7px" class="btn btn-success btn-lg">Suchen</button>
+        </div>
+
+        <div style="clear:both"></div>
+    </form>
+</div>
