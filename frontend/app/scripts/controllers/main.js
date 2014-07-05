@@ -8,10 +8,14 @@
  * Controller of the frontendApp
  */
 angular.module('frontendApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('MainCtrl', ['$scope', '$geolocation', function ($scope, $geolocation) {
+        $geolocation.watchPosition({
+            timeout: 60000,
+            maximumAge: 250,
+            enableHighAccuracy: true
+        });
+        $scope.myCoords = $geolocation.position.coords; // this is regularly updated
+        $scope.myError = $geolocation.position.error;
+        console.log($geolocation.position);
+
+    }]);
