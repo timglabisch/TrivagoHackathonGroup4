@@ -24,17 +24,25 @@ class main
     @userManager.on 'position', @sendUpdateToBackends.bind @
     @userManager.on 'request', @sendUpdateToBackends.bind @
 
-  sendUpdateToBackends: (user) ->
-    @backendUserManager.each (backendUser) ->
-      console.log "broadcast to " + backendUser.getUuid()
-      backendUser.send 'position',
-        uuid: user.getUuid()
-        lat: user.getLat()
-        long: user.getLong()
-        status: user.getStatus()
-        persons: user.getPersons()
-        rating: user.getRating()
 
+  sendUpdateToBackends: (user) ->
+    @backendUserManager.each (backendUser) =>
+      console.log "broadcast to " + backendUser.getUuid()
+      @sendUserToBackendUser backendUser, user
+
+  sendUserToBackendUser: (backendUser, user) ->
+    backendUser.send 'position',
+      uuid: user.getUuid()
+      lat: user.getLat()
+      long: user.getLong()
+      status: user.getStatus()
+      persons: user.getPersons()
+      rating: user.getRating()
+
+  # send everything to the backend
+  syncBackend: (backendUser) ->
+    @userManager.each (user) =>
+      @sendUserToBackendUser backendUser, user
 
   run: ->
     io.on 'connection', @onUserConnection.bind(@)
@@ -47,10 +55,12 @@ class main
     user.on 'disconnect', (user) => @userManager.remove user
 
   onBackendConnection: (socket) ->
-    user = new _backendUser parseInt(Math.random() * 100000), socket
+    backendUser = new _backendUser parseInt(Math.random() * 100000), socket
 
-    @backendUserManager.add user
-    user.on 'disconnect', (user) => @backendUserManager.remove user
+    @backendUserManager.add backendUser
+    backendUser.on 'disconnect', (user) => @backendUserManager.remove backendUser
+
+    @syncBackend backendUser
 
 (new main).run()
 
