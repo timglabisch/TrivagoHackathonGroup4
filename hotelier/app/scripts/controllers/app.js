@@ -8,7 +8,7 @@
  * Controller of the hotelierApp
  */
 angular.module('hotelierApp')
-  .controller('AppCtrl', function ($scope, socket, $routeParams, $rootScope) {
+  .controller('AppCtrl', function ($scope, socket, $routeParams, $rootScope, distanceCalculator) {
         $scope.requests = [];
 
         socket.on('position', function (data) {
@@ -20,6 +20,8 @@ angular.module('hotelierApp')
             data.longitude = data.long;
             delete data.lat;
             delete data.long;
+
+            data.distance = distanceCalculator.getDistanceBetweenCoordinates(data, $scope.hotel);
 
             if ($scope.requests.length == 0) {
                 data.active = true;
