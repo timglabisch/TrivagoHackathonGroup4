@@ -36,7 +36,10 @@
             console.log("yayy");
 
             $('.event_stream').append("<div> Offer Accepted: " + JSON.stringify(offer) +  "</div>")
+        });
 
+        socket.on('user_disconnect', function(user){
+            $('.event_stream').append("<div> User Disconnect: " + JSON.stringify(user) +  "</div>")
         });
 
     });

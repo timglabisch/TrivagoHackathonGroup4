@@ -26,6 +26,10 @@ class main
     @userManager.on 'accept_offer', @onAcceptOffer.bind @
     @backendUserManager.on 'sendOffer', @sendOfferToUser.bind @
 
+  sendDisconnectUsersToBackends: ->
+    @backendUserManager.each (backendUser) =>
+      @userManager.each (user) =>
+        backendUser.send 'user_disconnect', user.getUuid()
 
   sendUpdateToBackends: (user) ->
     @backendUserManager.each (backendUser) =>
@@ -67,7 +71,9 @@ class main
     user = new _user parseInt(Math.random() * 100000), socket
 
     @userManager.add user
-    user.on 'disconnect', (user) => @userManager.remove user
+    user.on 'disconnect', (user) =>
+      @sendDisconnectUsersToBackends user
+      @userManager.remove user
 
   onBackendConnection: (socket) ->
     backendUser = new _backendUser parseInt(Math.random() * 100000), socket
