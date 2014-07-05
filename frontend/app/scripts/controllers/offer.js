@@ -14,7 +14,7 @@ angular.module('frontendApp')
                 latitude: 0,
                 longitude: 0
             },
-            zoom: 8
+            zoom: 12
         };
 
         $rootScope.$watch('position', function (position) {
