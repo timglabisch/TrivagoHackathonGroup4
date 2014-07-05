@@ -72,6 +72,7 @@ angular.module('hotelierApp')
                 hotelId: $scope.hotel.place_id,
                 hotelInfo: {
                     name: $scope.hotel.name,
+                    address: $scope.hotel.address,
                     longitude: $scope.hotel.longitude,
                     latitude: $scope.hotel.latitude,
                     img: $scope.hotel.img
