@@ -15,6 +15,16 @@
                 </google-map>
             </div>
         </div>
+        <div class="row">
+            <form ng-submit="sendOffer()">
+                <div class="form-group">
+                    <label for="offerPrice">Preis</label>
+                    <input type="number" ng-model="offer.price" id="offerPrice" name="offerPrice" class="form-control" />
+                </div>
+
+                <button type="button" class="btn btn-success">Angebot senden</button>
+            </form>
+        </div>
     </div>
 </div>
 

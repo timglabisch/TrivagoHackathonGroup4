@@ -32,9 +32,6 @@ angular.module('hotelierApp')
             zoom: 15
         };
 
-        $scope.data = {};
-        $scope.data.activeRequest = {};
-
         $scope.hotel = $rootScope.hotels.filter(function(elem) {
             return elem.place_id == $routeParams.placeid;
         })[0];
@@ -59,6 +56,26 @@ angular.module('hotelierApp')
                 elem.active = false;
             });
             request.active = true;
-            $scope.data.activeRequest = request;
+        };
+
+        $scope.offer = {};
+        $scope.offer.price = $scope.hotel.price;
+
+        $scope.sendOffer = function () {
+            var currentRequest = $scope.requests.filter(function (elem) {
+                return elem.active;
+            })[0];
+
+            socket.emit('sendOffer', {
+                user_uuid: currentRequest.uuid,
+                price: $scope.offer.price,
+                hotelId: $scope.hotel.place_id,
+                hotelInfo: {
+                    name: $scope.hotel.name,
+                    longitude: $scope.hotel.longitude,
+                    latitude: $scope.hotel.latitude,
+                    img: $scope.hotel.img
+                }
+            });
         }
   });
