@@ -10,6 +10,7 @@ module.exports = class
     @users[user.getUuid()] = user
     user.on 'position', => @emit 'position', user
     user.on 'request', => @emit 'request', user
+    user.on 'accept_offer', (offer) => @emit 'accept_offer', user, offer
 
     console.log "Connect " + user.getUuid()
 
