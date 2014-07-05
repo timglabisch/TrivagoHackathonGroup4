@@ -43,13 +43,17 @@ angular.module('hotelierApp')
 
         socket.on('user_disconnect', function (user) {
             var old = $scope.requests.filter(function (elem) {
-                elem.uuid = user.uuid;
+                return elem.uuid == user;
             });
             if (old.length == 0) {
                 return;
             }
-            var index = $scope.requests.indexOf(old);
+            var oldElem = old[0];
+            var index = $scope.requests.indexOf(oldElem);
             $scope.requests.splice(index, 1);
+            if (oldElem.active) {
+                $scope.requests[0].active = true;
+            }
         });
 
         $scope.map = {
