@@ -9,7 +9,9 @@
  * Main module of the application.
  */
 angular
+
   .module('frontendApp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap', 'ngRoute', 'google-maps', 'ngGeolocation'])
+
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -31,6 +33,21 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  })
+
+  .factory('ws', function ($rootScope) {
+    var socket = io.connect();
+
+    return {
+      on: function (event, callback) {
+        socket.on(event, function () {
+          var args = arguments;
+          $rootScope.$apply(function () {
+            callback.apply(null, args);
+          });
+        });
+      }
+    };
   })
 
   .directive('tabs', function() {
