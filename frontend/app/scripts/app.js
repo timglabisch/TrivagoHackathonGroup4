@@ -22,6 +22,10 @@ angular
           templateUrl: 'views/offer.html',
           controller: 'OfferCtrl'
       })
+      .when('/offer_accepted', {
+          templateUrl: 'views/offer_accepted.html',
+          controller: 'OfferAccepted'
+      })
       .when('/offer/:id', {
           templateUrl: 'views/details.html',
           controller: 'DetailsCtrl'

@@ -1,7 +1,10 @@
-<form ng-submit="submit()">
-    <div class="form-group">
-        <label class="form-label" for="hotelIds">Hotel</label>
-        <select id="hotelIds" ng-model="data.selected" ng-options="hotel.name for hotel in $root.hotels" required="required"></select>
+<h1>Hotel Administration</h1>
+<form ng-submit="submit()" role="form">
+    <p>Beitte wählen Sie ein Hotel, um ein Angebot abzugeben.</p>
+    <div class="radio" ng-repeat="hotel in $root.hotels">
+        <label>
+            <input type="radio" name="hotel_id" ng-model="data.selected" ng-value="hotel"> {{hotel.name}}
+        </label>
     </div>
     <button type="submit" class="btn btn-primary">Jetzt starten</button>
 </form>
