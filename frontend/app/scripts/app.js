@@ -80,8 +80,9 @@ angular
             }
         };
     }])
+
   .factory('socket', function ($rootScope) {
-        var socket = io.connect('192.168.55.44:3000');
+        var socket = io.connect('http://localhost:3000');
 
         return {
             emit: function (event, data, callback) {
@@ -107,6 +108,7 @@ angular
             }
         };
   })
+
   .directive('tabs', function() {
     return {
       restrict: 'E',
