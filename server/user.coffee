@@ -11,11 +11,22 @@ module.exports = class
     socket.on 'msg', (msg) => console.log @getUuid() + " " + msg
     socket.on 'request', @onRequest.bind @
     socket.on 'position', @onPosition.bind @
+    socket.on 'accept_offer', @onAcceptOffer.bind @
     socket.on 'disconnect', @onDisconnect.bind @
 
   onDisconnect: ->
     console.log @getUuid() + " disconnect"
     @emit 'disconnect', @
+
+  onAcceptOffer: (jsonMsg) ->
+    try request = JSON.parse jsonMsg
+    catch
+      return @handleParsingError jsonMsg
+
+    return console.log "request.persons missing" if !request.backend_user_uuid
+    console.log "accept_offer"
+    @emit "accept_offer", request
+
 
   onRequest: (jsonMsg) ->
     try request = JSON.parse jsonMsg

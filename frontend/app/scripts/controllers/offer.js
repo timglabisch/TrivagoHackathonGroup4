@@ -8,7 +8,7 @@
  * Controller of the frontendApp
  */
 angular.module('frontendApp')
-    .controller('OfferCtrl', function ($scope, $rootScope) {
+    .controller('OfferCtrl', function ($scope, $rootScope, socket) {
         $scope.map = {
             center: {
                 latitude: 0,

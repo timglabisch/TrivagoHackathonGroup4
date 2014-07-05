@@ -23,6 +23,7 @@ class main
 
     @userManager.on 'position', @sendUpdateToBackends.bind @
     @userManager.on 'request', @sendUpdateToBackends.bind @
+    @userManager.on 'accept_offer', @onAcceptOffer.bind @
     @backendUserManager.on 'sendOffer', @sendOfferToUser.bind @
 
 
@@ -39,6 +40,12 @@ class main
       status: user.getStatus()
       persons: user.getPersons()
       rating: user.getRating()
+
+  onAcceptOffer: (user, offer) ->
+    backendUser = @backendUserManager.users[offer.backend_user_uuid]
+    return console.log "cant send offer to unknown user " + @offer.backend_user_uuid +"." if !backendUser
+    console.log "offer accepted"
+    backendUser.send 'offer_accepted', {user_uuid: user.getUuid()}
 
   sendOfferToUser: (backendUser, offer) ->
     console.log "transfer offer: " + JSON.stringify offer
