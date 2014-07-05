@@ -17,6 +17,18 @@ angular.module('frontendApp')
             zoom: 12
         };
 
+        $scope.markers = [];
+       
+        socket.on('offer', function(msg) {
+            $scope.markers.push({
+                'position': {
+                    'latitude': msg.lat, 
+                    'longitude': msg.long
+                },
+                'id': msg.backend_user_uuid
+            });
+        });
+
         $rootScope.$watch('position', function (position) {
             if (typeof(position) == 'undefined' || typeof(position.coords) == 'undefined') {
                 $scope.location = '';

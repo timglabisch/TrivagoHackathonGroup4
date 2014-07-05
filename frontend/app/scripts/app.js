@@ -80,6 +80,7 @@ angular
             }
         };
     }])
+
   .factory('socket', function ($rootScope) {
         var socket = io.connect('192.168.55.44:3000');
 
@@ -107,6 +108,7 @@ angular
             }
         };
   })
+
   .directive('tabs', function() {
     return {
       restrict: 'E',
