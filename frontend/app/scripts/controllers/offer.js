@@ -8,14 +8,20 @@
  * Controller of the frontendApp
  */
 angular.module('frontendApp')
-    .controller('OfferCtrl', function ($scope, $rootScope) {
+    .controller('OfferCtrl', function ($scope, $rootScope, socket) {
         $scope.map = {
             center: {
                 latitude: 0,
                 longitude: 0
             },
-            zoom: 8
+            zoom: 12
         };
+
+        $scope.markers = [];
+       
+        socket.on('offer', function(msg){
+            $scope.markers.push({'position': {'latitude': msg.lat, 'longitude': msg.long}});
+        });
 
         $rootScope.$watch('position', function (position) {
             if (typeof(position) == 'undefined' || typeof(position.coords) == 'undefined') {
