@@ -25,5 +25,10 @@ angular.module('frontendApp')
 
             $scope.map.center.latitude = position.coords.latitude;
             $scope.map.center.longitude = position.coords.longitude;
+
+            socket.emit('position', {
+                lat: $rootScope.position.coords.latitude,
+                long: $rootScope.position.coords.longitude
+            });
         }, true);
     });

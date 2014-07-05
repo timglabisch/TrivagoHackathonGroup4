@@ -50,14 +50,14 @@ angular
                     this.reject('error');
             		return;
             	}
-            
+
                 var promise = $http.get('http://maps.googleapis.com/maps/api/geocode/json?latlng=' + coords.latitude + ',' + coords.longitude + '&sensor=true')
                     .then(function (response) {
                         if (response.status == 200 && response.data.status == 'OK') {
                             var location = response.data.results.filter(function (elem) {
                                 return elem.types.indexOf('locality') != -1 || elem.types.indexOf('administrative_area_level_2') != -1;
                             });
-                            
+
                             if (location.length > 0) {
                             	return location[0].formatted_address;
                             }
@@ -76,33 +76,33 @@ angular
             }
         };
     }])
-    /*
-  .factory('ws', function ($rootScope) {
-    var socket = io();
+  .factory('socket', function ($rootScope) {
+        var socket = io.connect('192.168.55.44:3000');
 
-    return {
-      emit: function (event, data, callback) {
-        socket.emit(event, data, function () {
-          var args = arguments;
-          $rootScope.$apply(function () {
-            if (callback) {
-              callback.apply(null, args);
+        return {
+            emit: function (event, data, callback) {
+                socket.emit(event, JSON.stringify(data), function () {
+                    var args = arguments;
+                    $rootScope.$apply(function () {
+                        if (callback) {
+                            callback.apply(null, args);
+                        }
+                    });
+                });
+            },
+            on: function (event, callback) {
+                socket.on(event, function () {
+                    var args = arguments;
+                    $rootScope.$apply(function () {
+                        callback.apply(null, args);
+                    });
+                });
+            },
+            off: function (event, callback) {
+                socket.removeListener(event, callback);
             }
-          });
-        });
-      },
-
-      on: function (event, callback) {
-        socket.on(event, function () {
-          var args = arguments;
-          $rootScope.$apply(function () {
-            callback.apply(null, args);
-          });
-        });
-      }
-    };
+        };
   })
-  */
   .directive('tabs', function() {
     return {
       restrict: 'E',
@@ -110,14 +110,14 @@ angular
       scope: {},
       controller: function($scope, $element) {
         var panes = $scope.panes = [];
-         
+
         $scope.select = function(pane) {
           angular.forEach(panes, function(pane) {
             pane.selected = false;
           });
           pane.selected = true;
         }
-         
+
         this.addPane = function(pane) {
           if (panes.length == 0) $scope.select(pane);
           panes.push(pane);
@@ -134,7 +134,7 @@ angular
         '</div>',
       replace: true
     };
-  }) 
+  })
   .directive('pane', function() {
     return {
       require: '^tabs',
