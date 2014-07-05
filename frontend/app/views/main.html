@@ -1,4 +1,9 @@
-<form class="form-horizontal" style="margin: 50px;" ng-submit="submit()">
+<div class="logo-div">
+    <img class="img-responsive now" src="images/now.png" >
+    <img class="img-responsive logo" src="images/logo@2x_.png">
+
+</div>
+<form class="form-horizontal form-size" ng-submit="submit()">
     <div class="form-group">
         <div class="input-group">
             <span class="input-group-addon"><span class="fa fa-globe"></span></span>
@@ -7,19 +12,19 @@
     </div>
     <div class="form-group">
         <div class="btn-group">
-            <label class="btn btn-primary" ng-model="stars.one" btn-checkbox>1</label>
-            <label class="btn btn-primary" ng-model="stars.two" btn-checkbox>2</label>
-            <label class="btn btn-primary" ng-model="stars.three" btn-checkbox>3</label>
-            <label class="btn btn-primary" ng-model="stars.four" btn-checkbox>4</label>
-            <label class="btn btn-primary" ng-model="stars.five" btn-checkbox>5</label>
+            <label class="btn btn-primary btn-lg" ng-model="stars.one" btn-checkbox>1</label>
+            <label class="btn btn-primary btn-lg" ng-model="stars.two" btn-checkbox>2</label>
+            <label class="btn btn-primary btn-lg" ng-model="stars.three" btn-checkbox>3</label>
+            <label class="btn btn-primary btn-lg" ng-model="stars.four" btn-checkbox>4</label>
+            <label class="btn btn-primary btn-lg" ng-model="stars.five" btn-checkbox>5</label>
         </div>
     </div>
     <div class="form-group">
         <div class="btn-group">
-            <label class="btn btn-primary" ng-model="doubleRoom" btn-radio="false"><span class="fa fa-female"></span></label>
-            <label class="btn btn-primary" ng-model="doubleRoom" btn-radio="true"><span class="fa fa-female"></span><span class="fa fa-male"></span></label>
+            <label class="btn btn-primary btn-lg" ng-model="doubleRoom" btn-radio="false"><span class="fa fa-female"></span></label>
+            <label class="btn btn-primary btn-lg" ng-model="doubleRoom" btn-radio="true"><span class="fa fa-female"></span><span class="fa fa-male"></span></label>
         </div>
     </div>
 
-    <button type="submit" class="btn btn-success">Auktion starten</button>
+    <button type="submit" class="btn btn-success btn-lg">Auktion starten</button>
 </form>
