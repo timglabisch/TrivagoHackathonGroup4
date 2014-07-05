@@ -32,6 +32,8 @@ angular.module('hotelierApp')
             zoom: 15
         };
 
+        $scope.doubleRoom = false;
+
         $scope.hotel = $rootScope.hotels.filter(function(elem) {
             return elem.place_id == $routeParams.placeid;
         })[0];
@@ -48,6 +50,7 @@ angular.module('hotelierApp')
 
                 $scope.map.center.latitude = value.latitude;
                 $scope.map.center.longitude = value.longitude;
+                $scope.doubleRoom = (value.persons > 1);
             });
         }, true);
 
