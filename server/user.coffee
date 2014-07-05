@@ -5,6 +5,7 @@ module.exports = class
   status: 0
   persons: 0
   rating: 0
+  offers: {}
 
   constructor: (@uuid, @socket) ->
     pevent.addPeventMixinTo @
@@ -63,6 +64,22 @@ module.exports = class
     console.log jsonMsg
     console.log "-------"
     @emit 'error', "can't parse msg."
+
+  getOffers: -> @offers
+
+  addOffer: (backendUser, offer) ->
+    console.log "remove offer from " + backendUser.getUuid() + " for user " + @getUuid()
+    @offers[backendUser.getUuid()] = offer
+
+  removeOffer: (backendUser) ->
+    console.log "remove offer from " + backendUser.getUuid() + " for user " + @getUuid()
+    delete @offers[backendUser.getUuid()]
+
+  removeOffers: ->
+    console.log "remove offers for user " + @getUuid()
+    @offers = {}
+
+  getOffers: -> @offers
 
   setLat: (@lat) ->
 
