@@ -111,6 +111,54 @@ body {
   height: 500px;
 }
 
+.hotel-list-li, .offer-list-li{
+  height:100%;
+  list-style-type:none;
+}
+.hotel-info{
+  height:100px;
+  
+  float:left;
+  margin-left:5px;
+}
+.hotel-image
+{
+  width:90px;  
+  height:90px;
+  float:left;
+}
+
+.hotel-name
+{  
+  float:left;
+  margin-left:20px;
+  width:200px;
+}
+.hotel-price{
+  margin-left:80px;
+  float:left;
+}
+.hotel-info:before,
+.hotel-info:after {
+content: " ";
+display: table;
+}
+.hotel-info:after {
+clear: both;
+}
+.hotel-info {
+*zoom: 1;
+}
+.book-btn
+{
+  float:left;
+  padding-left:20px;
+}
+.offerhotels
+{
+  margin-top:10px;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
