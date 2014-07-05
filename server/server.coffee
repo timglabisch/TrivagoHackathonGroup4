@@ -5,7 +5,9 @@ http_backend = require('http').Server(app_backend);
 io = require('socket.io')(http);
 io_backend = require('socket.io')(http_backend);
 _user = require('./user.coffee')
+_backendUser = require('./backendUser.coffee')
 _userManager = require('./userManager.coffee')
+_backendUserManager = require('./backendUserManager.coffee')
 
 http.listen 3000, -> console.log 'listening on *:3000'
 http_backend.listen 3001, -> console.log 'backend on *:3001'
@@ -17,6 +19,12 @@ class main
 
   constructor: ->
     @userManager = new _userManager
+    @backendUserManager = new _backendUserManager
+
+    @userManager.on 'position', (user) =>
+      @backendUserManager.each (backendUser) ->
+        console.log "broadcast to " + backendUser.getUuid()
+        backendUser.send 'position', { uuid: user.getUuid(), lat: user.getLat(), long: user.getLong() }
 
   run: ->
     io.on 'connection', @onUserConnection.bind(@)
@@ -29,11 +37,10 @@ class main
     user.on 'disconnect', (user) => @userManager.remove user
 
   onBackendConnection: (socket) ->
-    socket.emit 'foo', "hello"
-    console.log "backend connection"
-    @userManager.on 'position', (user) =>
-      console.log "broadcast position"
-      socket.emit 'position', { uuid: user.getUuid(), lat: user.getLat(), long: user.getLong() }
+    user = new _backendUser parseInt(Math.random() * 100000), socket
+
+    @backendUserManager.add user
+    user.on 'disconnect', (user) => @backendUserManager.remove user
 
 (new main).run()
 

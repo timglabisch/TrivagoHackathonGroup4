@@ -7,7 +7,7 @@ module.exports = class
     socket.on 'msg', (msg) => console.log @getUuid() + " " + msg
     socket.on 'request', @onRequest.bind @
     socket.on 'position', @onPosition.bind @
-    socket.on 'disconnect', => @onDisconnect.bind @
+    socket.on 'disconnect', @onDisconnect.bind @
 
   onDisconnect: ->
     console.log @getUuid() + " disconnect"

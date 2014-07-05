@@ -4,7 +4,7 @@ module.exports = class
 
   constructor: ->
     pevent.addPeventMixinTo @
-    @users = []
+    @users = {}
 
   add: (user) ->
     @users[user.getUuid()] = user

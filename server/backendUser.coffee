@@ -4,7 +4,7 @@ module.exports = class
 
   constructor: (@uuid, @socket) ->
     pevent.addPeventMixinTo @
-    socket.on 'disconnect', => @onDisconnect.bind @
+    socket.on 'disconnect', @onDisconnect.bind @
 
   send: (channel, data) ->
     @socket.emit channel, data
