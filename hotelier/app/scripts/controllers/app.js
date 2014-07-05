@@ -21,7 +21,35 @@ angular.module('hotelierApp')
             delete data.lat;
             delete data.long;
 
-            $scope.requests.push(data);
+            if ($scope.requests.length == 0) {
+                data.active = true;
+                $scope.requests.push(data);
+                return;
+            }
+
+            var old = $scope.requests.filter(function (elem) {
+                return elem.uuid == data.uuid;
+            });
+            if (old.length == 0) {
+                $scope.requests.push(data);
+                return;
+            }
+            var oldElem = old[0];
+
+            var index = $scope.requests.indexOf(oldElem);
+            data.active = oldElem.active;
+            $scope.requests[index] = data;
+        });
+
+        socket.on('user_disconnect', function (user) {
+            var old = $scope.requests.filter(function (elem) {
+                elem.uuid = user.uuid;
+            });
+            if (old.length == 0) {
+                return;
+            }
+            var index = $scope.requests.indexOf(old);
+            $scope.requests.splice(index, 1);
         });
 
         $scope.map = {
