@@ -8,7 +8,7 @@
  * Controller of the frontendApp
  */
 angular.module('frontendApp')
-  .controller('MainCtrl', ['$scope', '$rootScope', '$geolocation', 'geocoding', function ($scope, $rootScope, $geolocation, geocoding) {
+  .controller('MainCtrl', ['$scope', '$rootScope', '$geolocation', 'geocoding', '$location', function ($scope, $rootScope, $geolocation, geocoding, $location) {
         $geolocation.watchPosition({
             timeout: 60000,
             maximumAge: 250,
@@ -37,4 +37,8 @@ angular.module('frontendApp')
         $scope.stars.three = false;
         $scope.stars.four = false;
         $scope.stars.five = false;
+
+        $scope.submit = function () {
+            $location.path( "/offer" );
+        }
     }]);
