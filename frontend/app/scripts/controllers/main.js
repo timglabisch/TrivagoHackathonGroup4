@@ -36,6 +36,8 @@ angular.module('frontendApp')
             socket.emit('position', {
                 lat: $rootScope.position.coords.latitude,
                 long: $rootScope.position.coords.longitude
+            }, function() {
+                console.log(arguments);
             });
 
             var numberMap = {one: 1, two: 2, three: 3, four: 4, five: 5};

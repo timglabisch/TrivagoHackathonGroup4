@@ -19,8 +19,14 @@ angular.module('frontendApp')
 
         $scope.markers = [];
        
-        socket.on('offer', function(msg){
-            $scope.markers.push({'position': {'latitude': msg.lat, 'longitude': msg.long}});
+        socket.on('offer', function(msg) {
+            $scope.markers.push({
+                'position': {
+                    'latitude': msg.lat, 
+                    'longitude': msg.long
+                },
+                'id': msg.backend_user_uuid
+            });
         });
 
         $rootScope.$watch('position', function (position) {
