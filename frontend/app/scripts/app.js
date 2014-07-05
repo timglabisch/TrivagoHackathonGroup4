@@ -34,7 +34,49 @@ angular
         redirectTo: '/'
       });
   })
-  
+
+  .run(function($rootScope, $geolocation) {
+        $geolocation.watchPosition({
+            timeout: 60000,
+            maximumAge: 250,
+            enableHighAccuracy: true
+        });
+        $rootScope.position = $geolocation.position;
+  })
+  .service('geocoding', ['$http', function ($http) {
+        return {
+            getCityForLocation: function (coords) {
+            	if (typeof(coords) == 'undefined' || typeof(coords.latitude) == 'undefined' || typeof(coords.longitude) == 'undefined') {
+                    this.reject('error');
+            		return;
+            	}
+            
+                var promise = $http.get('http://maps.googleapis.com/maps/api/geocode/json?latlng=' + coords.latitude + ',' + coords.longitude + '&sensor=true')
+                    .then(function (response) {
+                        if (response.status == 200 && response.data.status == 'OK') {
+                            var location = response.data.results.filter(function (elem) {
+                                return elem.types.indexOf('locality') != -1 || elem.types.indexOf('administrative_area_level_2') != -1;
+                            });
+                            
+                            if (location.length > 0) {
+                            	return location[0].formatted_address;
+                            }
+                            else {
+                                this.reject('error');
+                            	return;
+                            }
+                        }
+                        else {
+                            this.reject('error');
+                            return;
+                        }
+                    });
+
+                return promise;
+            }
+        };
+    }])
+    /*
   .factory('ws', function ($rootScope) {
     var socket = io();
 
@@ -60,7 +102,7 @@ angular
       }
     };
   })
-  
+  */
   .directive('tabs', function() {
     return {
       restrict: 'E',
