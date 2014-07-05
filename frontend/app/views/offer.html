@@ -1,4 +1,5 @@
 <!-- Add your site or application content here -->
+<!--
 <div class="btn-group btn-group-justified">
   <div class="btn-group">
     <button type="button" class="btn btn-default">Liste</button>
@@ -7,46 +8,39 @@
     <button type="button" class="btn btn-default">Karte</button>
   </div>
 </div>
+-->
 
-<div class="map"></div>
-
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
+<tabs>
+  <pane title="Karte">
+    <google-map center="map.center" zoom="map.zoom">
+      <marker coords='map.center'>
+      </marker>
+    </google-map>
+  </pane>
+  <pane title="Liste">
+    <ul class="media-list">
+      <li class="media">
+        <a class="pull-left" href="#">
+          <img class="media-object" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZWVlIi8+PHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMzIiIHk9IjMyIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9zdmc+" alt="...">
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">Media heading</h4>
+          Lorem
+        </div>
+      </li>
+      <li class="media">
+        <a class="pull-left" href="#">
+          <img class="media-object" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZWVlIi8+PHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMzIiIHk9IjMyIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9zdmc+" alt="...">
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">Media heading</h4>
+          Lorem
+        </div>
+      </li>
+    </ul>
+  </pane>
+</tabs>
 
 <div class="footer">
   <p><span class="fa fa-heart"></span> from the Yeoman team</p>
 </div>
-
-
-<script>
-  function initialize() {
-    var mapOptions = {
-      zoom: 8,
-      center: new google.maps.LatLng(-34.397, 150.644),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  }
-
-
-  function loadScript() {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "http://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&sensor=TRUE_OR_FALSE&callback=initialize";
-    document.body.appendChild(script);
-  }
-
-  window.onload = loadScript;
-</script>

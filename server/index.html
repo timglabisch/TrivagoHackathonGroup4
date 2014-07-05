@@ -1,0 +1,59 @@
+<script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+    $(document).ready(function() {
+
+        var socket = io();
+
+        $('.demo').each(function(i, el) {
+
+            var domMsg = $(el).find('.msg')
+            var domBtn = $(el).find('.gogo')
+
+            domBtn.click(function(e){
+                var msg = domMsg.val().trim()
+                var channel = domMsg.data('channel')
+
+                socket.emit(channel, msg);
+                console.log("/c:" + channel +" "+ msg);
+                e.preventDefault();
+            });
+
+        });
+
+
+
+        socket.on('chat message', function(msg){
+            console.log("foo: " + msg);
+        });
+
+    });
+
+</script>
+
+<div class="demo">
+    <input class="msg" data-channel="msg"/>
+    <button class="gogo"/>
+</div>
+
+<hr/>
+
+<h1>Request:</h1>
+
+<div class="demo">
+    <textarea class="msg" data-channel="request">
+        khfasfhas
+    </textarea>
+    <button class="gogo"/>
+</div>
+
+<hr/>
+
+<h1>Position:</h1>
+
+<div class="demo">
+    <textarea class="msg" data-channel="position">
+        {"lat": 40.342459439, "long": 40.8934783}
+    </textarea>
+    <button class="gogo"/>
+</div>
