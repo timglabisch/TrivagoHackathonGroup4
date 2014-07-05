@@ -2,6 +2,10 @@ pevent = require './pevent.coffee'
 
 module.exports = class
 
+  status: 0
+  persons: 0
+  rating: 0
+
   constructor: (@uuid, @socket) ->
     pevent.addPeventMixinTo @
     socket.on 'msg', (msg) => console.log @getUuid() + " " + msg
@@ -18,7 +22,14 @@ module.exports = class
     catch
       return @handleParsingError jsonMsg
 
-    console.log request
+    console.log "request.persons missing" if !request.persons
+    console.log "request.rating missing" if !request.rating
+    console.log "request.status missing" if !request.status
+
+    @setPersons request.persons
+    @setRating request.rating
+    @setStatus request.status
+    @emit "request", @
 
   onPosition: (jsonMsg) ->
     try request = JSON.parse jsonMsg
@@ -48,3 +59,15 @@ module.exports = class
   getLong: -> @long
 
   getUuid: -> @uuid
+
+  setStatus: (@status) ->
+
+  getStatus: -> @status
+
+  setRating: (@rating) ->
+
+  getRating: -> @rating
+
+  setPersons: (@persons) ->
+
+  getPersons: -> @persons
