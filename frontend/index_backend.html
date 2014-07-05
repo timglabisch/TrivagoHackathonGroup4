@@ -3,7 +3,7 @@
 <script>
     $(document).ready(function() {
 
-        var socket = io();
+        var socket = io('192.168.55.44:3001');
 
         $('.demo').each(function(i, el) {
 
@@ -26,33 +26,16 @@
         });
 
 
-        socket.on('position', function(foo){
-            $('.event_stream').append("<div> Pos: " + JSON.stringify(foo) +  "</div>")
-        });
-
-        socket.on('offer_accepted', function(offer){
+        socket.on('position', function(client){
             console.log("yayy");
-
-            $('.event_stream').append("<div> Offer Accepted: " + JSON.stringify(offer) +  "</div>")
-        });
-
-        socket.on('user_disconnect', function(user){
-            $('.event_stream').append("<div> User Disconnect: " + JSON.stringify(user) +  "</div>")
+            console.log(client);
+            $('.event_stream').append("<div>" + client.uuid +": lat:" +  client.lat + " long:" + client.long + " persons:" + client.persons + " rating:" + client.rating + " status:" + client.status +  "</div>")
         });
 
     });
 
 </script>
 
-
-<h1>Send Offer:</h1>
-
-<div class="demo">
-    <textarea class="msg" data-channel="sendOffer">
-        {"user_uuid": 1, "price": 4, "something_that_is_undefined": "yayy"}
-    </textarea>
-    <button class="gogo"/>
-</div>
 
 <div class="event_stream">
 

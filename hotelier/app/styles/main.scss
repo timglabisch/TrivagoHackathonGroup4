@@ -28,10 +28,8 @@ body {
     padding-bottom: 19px;
   }
 }
-.form-size
-{
-  margin: 0px 30px;
-}
+
+/* Custom page footer */
 .logo-div
 {
   min-height: 100px;
@@ -91,10 +89,6 @@ body {
   }
 }
 
-.angular-google-map-container {
-  height: 400px;
-}
-
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
@@ -116,4 +110,29 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1180px;
+  }
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+.angular-google-map-container {
+  height: 200px;
 }

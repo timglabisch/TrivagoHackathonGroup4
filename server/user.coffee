@@ -5,17 +5,29 @@ module.exports = class
   status: 0
   persons: 0
   rating: 0
+  offers: {}
 
   constructor: (@uuid, @socket) ->
     pevent.addPeventMixinTo @
     socket.on 'msg', (msg) => console.log @getUuid() + " " + msg
     socket.on 'request', @onRequest.bind @
     socket.on 'position', @onPosition.bind @
+    socket.on 'accept_offer', @onAcceptOffer.bind @
     socket.on 'disconnect', @onDisconnect.bind @
 
   onDisconnect: ->
     console.log @getUuid() + " disconnect"
     @emit 'disconnect', @
+
+  onAcceptOffer: (jsonMsg) ->
+    try request = JSON.parse jsonMsg
+    catch
+      return @handleParsingError jsonMsg
+
+    return console.log "request.persons missing" if !request.backend_user_uuid
+    console.log "accept_offer"
+    @emit "accept_offer", request
+
 
   onRequest: (jsonMsg) ->
     try request = JSON.parse jsonMsg
@@ -52,6 +64,22 @@ module.exports = class
     console.log jsonMsg
     console.log "-------"
     @emit 'error', "can't parse msg."
+
+  getOffers: -> @offers
+
+  addOffer: (backendUser, offer) ->
+    console.log "remove offer from " + backendUser.getUuid() + " for user " + @getUuid()
+    @offers[backendUser.getUuid()] = offer
+
+  removeOffer: (backendUser) ->
+    console.log "remove offer from " + backendUser.getUuid() + " for user " + @getUuid()
+    delete @offers[backendUser.getUuid()]
+
+  removeOffers: ->
+    console.log "remove offers for user " + @getUuid()
+    @offers = {}
+
+  getOffers: -> @offers
 
   setLat: (@lat) ->
 
