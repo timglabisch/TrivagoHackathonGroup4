@@ -8,7 +8,7 @@
  * Controller of the frontendApp
  */
 angular.module('frontendApp')
-    .controller('OfferCtrl', function ($scope, $rootScope, socket, $location) {
+    .controller('OfferCtrl', function ($scope, $rootScope, socket, $location, distanceCalculator) {
         $scope.offers = [];
 
         $scope.map = {
@@ -24,6 +24,8 @@ angular.module('frontendApp')
                 console.err("hotelInfo is not defined");
                 return;
             }
+
+            offer.dist = parseFloat(distanceCalculator.getDistanceBetweenCoordinates($scope.map.center, offer.hotelInfo)).toFixed(2);
 
             if ($scope.offers.length == 0) {
                 $scope.offers.push(offer);
