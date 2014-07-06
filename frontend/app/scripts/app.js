@@ -51,7 +51,6 @@ angular
         return {
             getCityForLocation: function (coords) {
             	if (typeof(coords) == 'undefined' || typeof(coords.latitude) == 'undefined' || typeof(coords.longitude) == 'undefined') {
-                    this.reject('error');
             		return;
             	}
 
@@ -66,12 +65,10 @@ angular
                             	return location[0].formatted_address;
                             }
                             else {
-                                this.reject('error');
                             	return;
                             }
                         }
                         else {
-                            this.reject('error');
                             return;
                         }
                     });
