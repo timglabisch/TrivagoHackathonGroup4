@@ -21,6 +21,8 @@ Password: rtzleomovitc
 
 Google API Key: AIzaSyDOFhsxMGFu6A4VsMVjZBdcwWyxkbXGAS8
 
+Alternative Google Key: AIzaSyBqhLqRlWJyy5BDrMBzCor5jTgpxdSf7JE
+
 Beispiel Response:
 
 ```
