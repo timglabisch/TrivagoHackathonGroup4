@@ -71,11 +71,11 @@ angular
                             	return location[0].formatted_address;
                             }
                             else {
-                            	return;
+                            	return "Some Location";
                             }
                         }
                         else {
-                            return;
+                            return "Some Location";
                         }
                     });
 
@@ -85,7 +85,7 @@ angular
     }])
 
   .factory('socket', function ($rootScope) {
-        var socket = io.connect('192.168.55.44:3000');
+        var socket = io.connect('146.185.186.126:3000');
 
         return {
             emit: function (event, data, callback) {
