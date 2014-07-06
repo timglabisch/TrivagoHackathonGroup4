@@ -44,8 +44,8 @@ angular.module('frontendApp')
             var numberMap = {one: 1, two: 2, three: 3, four: 4, five: 5};
 
             var ratings = [];
-            Object.keys($scope.ratings).forEach(function (key) {
-                if ($scope.ratings[key]) {
+            Object.keys($scope.rating).forEach(function (key) {
+                if ($scope.rating[key]) {
                     ratings.push(numberMap[key]);
                 }
             });
