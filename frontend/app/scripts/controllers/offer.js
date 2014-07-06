@@ -9,6 +9,8 @@
  */
 angular.module('frontendApp')
     .controller('OfferCtrl', function ($scope, $rootScope, socket) {
+        $scope.offers = [];
+
         $scope.map = {
             center: {
                 latitude: 0,
@@ -19,13 +21,16 @@ angular.module('frontendApp')
 
         $scope.markers = [];
 
-        socket.on('offer', function(msg) {
+        socket.on('offer', function(offer) {
+            console.log(offer);
+            $scope.offers.push(offer)
+
             $scope.markers.push({
                 'position': {
-                    'latitude': msg.lat,
-                    'longitude': msg.long
+                    'latitude': offer.lat,
+                    'longitude': offer.long
                 },
-                'id': msg.backend_user_uuid
+                'id': offer.backend_user_uuid
             });
         });
 
@@ -36,6 +41,10 @@ angular.module('frontendApp')
         $scope.offerhotels = [
             {"name":"Hotel Nikko D\u00fcsseldorf","0":true,"longitude":"6.7884","latitude":"51.22309","rating":3.8,"place_id":"ChIJO5sptzrKuEcRju-J-azY_HI","price":100,"img":"ChIJO5sptzrKuEcRju-J-azY_HI.jpg"},{"name":"Breidenbacher Hof, a Capella Hotel","0":true,"longitude":"6.777759","latitude":"51.225498","rating":4.4,"place_id":"ChIJL198miLKuEcR8-vP1kts4bM","price":110,"img":"ChIJL198miLKuEcR8-vP1kts4bM.jpg"}
         ];
+
+        $scope.book = function(hotelId) {
+
+        };
 
         $rootScope.$watch('position', function (position) {
             if (typeof(position) == 'undefined' || typeof(position.coords) == 'undefined') {
