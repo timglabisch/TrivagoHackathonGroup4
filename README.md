@@ -18,3 +18,5 @@ IP Address: 146.185.186.126
 Username: root
 Password: rtzleomovitc
 ``
+
+Google API Key: AIzaSyAVWhMhIwZkl_SgYPvWBXDGKo0Q-ZoNy2Q
