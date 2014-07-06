@@ -55,7 +55,7 @@ angular
             		return;
             	}
 
-                var promise = $http.get('http://maps.googleapis.com/maps/api/geocode/json?latlng=' + coords.latitude + ',' + coords.longitude + '&sensor=true')
+                var promise = $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + coords.latitude + ',' + coords.longitude + '&sensor=true&key=AIzaSyDOFhsxMGFu6A4VsMVjZBdcwWyxkbXGAS8')
                     .then(function (response) {
                         if (response.status == 200 && response.data.status == 'OK') {
                             var location = response.data.results.filter(function (elem) {

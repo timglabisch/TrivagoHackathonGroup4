@@ -19,4 +19,4 @@ Username: root
 Password: rtzleomovitc
 ``
 
-Google API Key: AIzaSyAVWhMhIwZkl_SgYPvWBXDGKo0Q-ZoNy2Q
+Google API Key: AIzaSyDOFhsxMGFu6A4VsMVjZBdcwWyxkbXGAS8
