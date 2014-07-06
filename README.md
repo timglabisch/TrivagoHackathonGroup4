@@ -20,3 +20,9 @@ Password: rtzleomovitc
 ``
 
 Google API Key: AIzaSyDOFhsxMGFu6A4VsMVjZBdcwWyxkbXGAS8
+
+Beispiel Response:
+
+```
+{ "user_uuid": 25823, "price": 110, "hotelId": "ChIJL198miLKuEcR8-vP1kts4bM", "hotelInfo": { "name": "Breidenbacher Hof, a Capella Hotel", "address": "Königsallee 11, Düsseldorf", "longitude": "6.777759", "latitude": "51.225498", "img": "ChIJL198miLKuEcR8-vP1kts4bM.jpg", "rating": 4.4 }, "backend_user_uuid": 33158 } 
+```

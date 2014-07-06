@@ -119,7 +119,8 @@ angular.module('hotelierApp')
                     address: $scope.hotel.address,
                     longitude: $scope.hotel.longitude,
                     latitude: $scope.hotel.latitude,
-                    img: $scope.hotel.img
+                    img: $scope.hotel.img,
+                    rating: $scope.hotel.rating
                 }
             });
         }
