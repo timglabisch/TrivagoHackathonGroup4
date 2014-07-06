@@ -53,7 +53,7 @@ angular.module('frontendApp')
 
             socket.emit('accept_offer', { backend_user_uuid: hotel.backend_user_uuid })
 
-            $location.path('/offer/' + hotel.hotelInfo.place_id + '/book');
+            $location.path('/offer/' + hotel.backend_user_uuid + '/book');
 
         };
 
