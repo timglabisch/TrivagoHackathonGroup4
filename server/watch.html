@@ -1,0 +1,61 @@
+
+<script src="/jquery.js"></script>
+<script src="/socket.js"></script>
+<script src="/watch.js"></script>
+
+<style type="text/css">
+    .watch {
+        position:absolute;
+        background-image: url(trivago-now.png);
+        width: 716px;
+        height: 516px;
+    }
+
+    .innerWatch {
+        position: absolute;
+        border: 1px solid red;
+        width: 200px;
+        height: 200px;
+        margin-left: 168px;
+        margin-top: 61px;
+        width: 389px;
+        height: 367px;
+        background: #ccc;
+    }
+
+    .notify {
+        text-align: center;
+        bottom:0;
+        position: absolute;
+        width:389px;
+        background:white;
+        padding:10px;
+        min-height: 130px;
+        font-size: 25px;
+        font-family: Helvetica;
+    }
+
+    .notify .headline {
+        font-size: 30px;
+    }
+
+
+</style>
+
+<hr/>
+
+
+<div class="main">
+
+
+    <div class="innerWatch">
+        <div class="notifyWrapper">
+            <div class="notify">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="watch">
+    </div>
+</div>
