@@ -41,7 +41,7 @@ angular.module('hotelierApp')
 
             var index = $scope.requests.indexOf(oldElem);
             data.active = oldElem.active;
-            
+
             $scope.requests[index] = data;
         });
         socket.on('accept_offer', function (message){
@@ -84,9 +84,9 @@ angular.module('hotelierApp')
             newValue.forEach(function(value) {
                 if (!value.active) {
                     return;
-                }                
-                
-                $scope.map.center.latitude = value.latitude;                
+                }
+
+                $scope.map.center.latitude = value.latitude;
                 $scope.map.center.longitude = value.longitude;
                 $scope.doubleRoom = (value.persons > 1);
 
@@ -107,7 +107,7 @@ angular.module('hotelierApp')
             var currentRequest = $scope.requests.filter(function (elem) {
                 return elem.active;
             })[0];
-            console.log('test');
+
             socket.emit('sendOffer', {
                 user_uuid: currentRequest.uuid,
                 price: $scope.offer.price,
