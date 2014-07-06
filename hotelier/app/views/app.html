@@ -3,10 +3,11 @@
         <ul class="nav nav-pills nav-stacked">
             <li ng-repeat="request in requests | orderBy: 'dist'" ng-class="{'active': request.active}"><a ng-click="select(request)">
 
-                <div class="hotelier-badge"><span class="fa fa-female"></span><span class="fa fa-male" ng-if="request.doubleRoom"></span></div> Entfernung: {{request.dist}}km</a>
+                <div class="hotelier-badge"><span class="fa fa-female"></span><span class="fa fa-male" ng-if="request.doubleRoom"></span></div> Entfernung: {{request.dist}}km
+            <span class="fa fa-check" ng-class="{'active': request.active}" ng-if="user_uuid==request.uuid"></span></a>
                 
-                    
                 
+
             </li>
         </ul>
     </div>

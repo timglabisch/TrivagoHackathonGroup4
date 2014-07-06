@@ -10,7 +10,7 @@
 angular.module('hotelierApp')
   .controller('AppCtrl', function ($scope, socket, $routeParams, $rootScope, distanceCalculator) {
         $scope.requests = [];
-
+        
         socket.on('position', function (data) {
             if (data.status == 0) {
                 return;
@@ -44,8 +44,9 @@ angular.module('hotelierApp')
 
             $scope.requests[index] = data;
         });
-        socket.on('accept_offer', function (message){
-            console.log(message);
+        socket.on('offer_accepted', function (message){
+            
+            $scope.user_uuid = message.user_uuid;
         });
         socket.on('user_disconnect', function (user) {
             var old = $scope.requests.filter(function (elem) {
@@ -85,7 +86,7 @@ angular.module('hotelierApp')
                 if (!value.active) {
                     return;
                 }
-
+                console.log(value);
                 $scope.map.center.latitude = value.latitude;
                 $scope.map.center.longitude = value.longitude;
                 $scope.doubleRoom = (value.persons > 1);
