@@ -22,6 +22,9 @@
                       </div>
                       <div><img src="/images/offer.png" style="width:25px; height:25px;"></div>
                   </div>
+                  <div class="hotel-distance" style="float: left;">
+                      Entfernung: {{offer.dist}}km
+                  </div>
                   <div class="hotel-price">
                       {{offer.price}}€
                   </div>
@@ -47,6 +50,9 @@
             </div>
             <div><img src="/images/offer.png" style="width:25px; height:25px;"></div>
             </div>
+            <div class="hotel-distance" style="float: left;">
+                Entfernung: {{offer.dist}}km
+            </div>
             <div class="hotel-price">
               {{offer.price}}€
             </div>
@@ -56,7 +62,9 @@
           </div>
           </li>
         </ul>
-        <ul class="hotels">
+   <!--
+       Nicht in der Demo
+       <ul class="hotels">
           <li class="hotel-list-li" ng-repeat="hotel in hotels | filter:query | orderBy:orderProp">
           <div class="hotel-info">
             <div class="hotel-image" style="background:url(/images/hotel/{{hotel.place_id}}.jpg) 50% 50% no-repeat;">
@@ -73,6 +81,6 @@
             </div>
           </div>
           </li>
-        </ul>
+        </ul> -->
   </pane>
 </tabs>
