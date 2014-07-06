@@ -18,20 +18,14 @@ angular.module('frontendApp')
             },
             zoom: 12
         };
-
-        $scope.markers = [];
-
+        
         socket.on('offer', function(offer) {
-            console.log(offer);
-            $scope.offers.push(offer)
+            if (typeof(offer.hotelInfo) == "undefined") {
+                console.err("hotelInfo is not defined");
+                return;
+            }
 
-            $scope.markers.push({
-                'position': {
-                    'latitude': offer.latitude,
-                    'longitude': offer.longitude
-                },
-                'id': offer.backend_user_uuid
-            });
+            $scope.offers.push(offer)
         });
 
         $scope.hotels = [

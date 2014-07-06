@@ -9,8 +9,7 @@
   <pane title="Karte">
     <google-map center="map.center" zoom="map.zoom" options="{streetViewControl: false, mapTypeControlOptions: { mapTypeIds: [] }}">
 
-      <marker ng-repeat="offer in offers" coords="offer.hotelInfo">
-          <marker-label content="offer.hotelInfo.name"></marker-label>
+      <marker ng-repeat="offer in offers" coords="offer.hotelInfo" labelContent="offer.hotelInfo.name" labelAnchor="22 0" labelClass="marker-labels">
           <window isIconVisibleOnClick="true">
               <div class="hotel-info">
                   <div class="hotel-image">
