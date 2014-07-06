@@ -27,8 +27,8 @@ angular.module('frontendApp')
 
             $scope.markers.push({
                 'position': {
-                    'latitude': offer.lat,
-                    'longitude': offer.long
+                    'latitude': offer.latitude,
+                    'longitude': offer.longitude
                 },
                 'id': offer.backend_user_uuid
             });
