@@ -22,7 +22,8 @@ angular.module('hotelierApp')
             delete data.long;
 
             data.distance = distanceCalculator.getDistanceBetweenCoordinates(data, $scope.hotel);
-
+            data['dist']=parseFloat(distanceCalculator.getDistanceBetweenCoordinates(data,$scope.hotel)).toFixed(2);
+            data['doubleRoom'] = (data.persons > 1);
             if ($scope.requests.length == 0) {
                 data.active = true;
                 $scope.requests.push(data);
@@ -40,9 +41,12 @@ angular.module('hotelierApp')
 
             var index = $scope.requests.indexOf(oldElem);
             data.active = oldElem.active;
+            
             $scope.requests[index] = data;
         });
-
+        socket.on('accept_offer', function (message){
+            console.log(message);
+        });
         socket.on('user_disconnect', function (user) {
             var old = $scope.requests.filter(function (elem) {
                 return elem.uuid == user;
@@ -80,11 +84,12 @@ angular.module('hotelierApp')
             newValue.forEach(function(value) {
                 if (!value.active) {
                     return;
-                }
-
-                $scope.map.center.latitude = value.latitude;
+                }                
+                
+                $scope.map.center.latitude = value.latitude;                
                 $scope.map.center.longitude = value.longitude;
                 $scope.doubleRoom = (value.persons > 1);
+
             });
         }, true);
 
@@ -102,11 +107,13 @@ angular.module('hotelierApp')
             var currentRequest = $scope.requests.filter(function (elem) {
                 return elem.active;
             })[0];
-
+            console.log('test');
             socket.emit('sendOffer', {
                 user_uuid: currentRequest.uuid,
                 price: $scope.offer.price,
                 hotelId: $scope.hotel.place_id,
+                taxi: $scope.offer.taxi,
+                breakfast: $scope.offer.breakfast,
                 hotelInfo: {
                     name: $scope.hotel.name,
                     address: $scope.hotel.address,

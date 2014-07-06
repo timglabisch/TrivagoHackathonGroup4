@@ -1,7 +1,13 @@
 <div class="row">
     <div class="col-lg-3">
         <ul class="nav nav-pills nav-stacked">
-            <li ng-repeat="request in requests" ng-class="{'active': request.active}"><a ng-click="select(request)">{{ request.uuid }}</a></li>
+            <li ng-repeat="request in requests | orderBy: 'dist'" ng-class="{'active': request.active}"><a ng-click="select(request)">
+
+                <div class="hotelier-badge"><span class="fa fa-female"></span><span class="fa fa-male" ng-if="request.doubleRoom"></span></div> Entfernung: {{request.dist}}km</a>
+                
+                    
+                
+            </li>
         </ul>
     </div>
     <div class="col-lg-9">
@@ -21,7 +27,9 @@
             <form ng-submit="sendOffer()">
                 <div class="form-group">
                     <label for="offerPrice">Preis</label>
-                    <input type="number" ng-model="offer.price" id="offerPrice" name="offerPrice" class="form-control" />
+                    <input type="number" ng-model="offer.price" id="offerPrice" name="offerPrice" class="form-control">Taxi</input>
+                    <input type="checkbox" ng-model="offer.taxi" id="offerTaxi" name="offerTaxi">Breakfast</input>                    
+                    <input type="checkbox" ng-model="offer.breakfast" id="offerBreakfast" name="offerBreakfast"  />
                 </div>
 
                 <button type="submit" class="btn btn-success">Angebot senden</button>
