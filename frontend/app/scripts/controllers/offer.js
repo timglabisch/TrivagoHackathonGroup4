@@ -9,6 +9,8 @@
  */
 angular.module('frontendApp')
     .controller('OfferCtrl', function ($scope, $rootScope, socket) {
+        $scope.offers = [];
+
         $scope.map = {
             center: {
                 latitude: 0,
@@ -19,13 +21,16 @@ angular.module('frontendApp')
 
         $scope.markers = [];
 
-        socket.on('offer', function(msg) {
+        socket.on('offer', function(offer) {
+            console.log(offer);
+            $scope.offers.push(offer)
+
             $scope.markers.push({
                 'position': {
-                    'latitude': msg.lat,
-                    'longitude': msg.long
+                    'latitude': offer.lat,
+                    'longitude': offer.long
                 },
-                'id': msg.backend_user_uuid
+                'id': offer.backend_user_uuid
             });
         });
 

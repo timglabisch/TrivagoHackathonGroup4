@@ -4,7 +4,7 @@
 </div>
 
 <div style="clear:both"></div>
-
+<div>{{offers | json}}</div>
 <tabs>
   <pane title="Karte">
     <google-map center="map.center" zoom="map.zoom" options="{streetViewControl: false}">
@@ -15,19 +15,20 @@
   </pane>
   <pane title="Liste">
     <ul class="offerhotels">
-          <li class="offer-list-li" ng-repeat="offerhotel in offerhotels | filter:query | orderBy:orderProp">
+          <li class="offer-list-li" ng-repeat="offer in offers | orderBy:orderProp">
             <div class="hotel-info">
-            <div class="hotel-image" style="background:url(/images/hotel/{{offerhotel.place_id}}.jpg) 50% 50% no-repeat;">
+            <div class="hotel-image">
+                <img ng-src="/images/hotel/{{offer.hotelInfo.img}}" width="90" height="90" />
             </div>
             <div class="hotel-name">
               <div>
-              <b>{{offerhotel.name}}</b>
-              <p>{{offerhotel.rating}} von 5</p>
+              <b>{{offer.hotelInfo.name}}</b>
+              <p>{{offer.hotelInfo.rating}} von 5</p>
             </div>
             <div><img src="/images/offer.png" style="width:25px; height:25px;"></div>
             </div>
             <div class="hotel-price">
-              {{offerhotel.price}}€
+              {{offer.price}}€
             </div>
             <div class="book-btn">
               <button type="submit" class="btn btn-success btn-lg">Buchen</button>
