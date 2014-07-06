@@ -14,6 +14,11 @@ http_backend.listen 3001, -> console.log 'backend on *:3001'
 
 app.get '/', (req, res) -> res.sendfile 'index.html'
 app_backend.get '/', (req, res) -> res.sendfile 'index_backend.html'
+app.get '/watch.html', (req, res) -> res.sendfile 'watch.html'
+app.get '/trivago-now.png', (req, res) -> res.sendfile 'trivago-now.png'
+app.get '/watch.js', (req, res) -> res.sendfile 'watch.js'
+app.get '/jquery.js', (req, res) -> res.sendfile 'jquery.js'
+app.get '/socket.js', (req, res) -> res.sendfile 'socket.js'
 
 class main
 

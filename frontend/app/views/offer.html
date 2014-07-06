@@ -51,7 +51,7 @@
               {{offer.price}}€
             </div>
             <div class="book-btn">
-              <button type="button" class="btn btn-success btn-lg" ng-submit="book(offer.hotelId)">Buchen</button>
+              <button type="button" class="btn btn-success btn-lg" ng-click="book(offer)">Buchen</button>
             </div>
           </div>
           </li>
@@ -69,7 +69,7 @@
               {{hotel.price}}€
             </div>
             <div class="book-btn">
-              <button type="submit" class="btn btn-success btn-lg">Buchen</button>
+              <button type="button" class="btn btn-success btn-lg" ng-click="book(hotel)">Buchen</button>
             </div>
           </div>
           </li>

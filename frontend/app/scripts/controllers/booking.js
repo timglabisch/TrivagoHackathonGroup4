@@ -8,6 +8,12 @@
  * Controller of the frontendApp
  */
 angular.module('frontendApp')
-    .controller('BookingCtrl', function ($scope, $routeParams, socket) {
-        socket.emit('accept_offer', {"backend_user_uuid": $routeParams.id});
+    .controller('BookingCtrl', function ($scope, $routeParams, $rootScope, socket) {
+
+        /*
+        var hotels = $rootScope.hotels.filter(function(o) { return o.place_id == $routeParams.id; })
+
+        $scope.hotel = hotels.length ? hotels[0] : {}
+        */
+
     });
