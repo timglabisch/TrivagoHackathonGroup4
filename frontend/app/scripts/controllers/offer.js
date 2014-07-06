@@ -18,14 +18,29 @@ angular.module('frontendApp')
             },
             zoom: 12
         };
-        
+
         socket.on('offer', function(offer) {
             if (typeof(offer.hotelInfo) == "undefined") {
                 console.err("hotelInfo is not defined");
                 return;
             }
 
-            $scope.offers.push(offer)
+            if ($scope.offers.length == 0) {
+                $scope.offers.push(offer);
+                return;
+            }
+
+            var old = $scope.offers.filter(function (elem) {
+                return elem.hotelId == offer.hotelId;
+            });
+            if (old.length == 0) {
+                $scope.offers.push(offer);
+                return;
+            }
+            var oldElem = old[0];
+
+            var index = $scope.offers.indexOf(oldElem);
+            $scope.offers[index] = offer;
         });
 
         $scope.hotels = [
